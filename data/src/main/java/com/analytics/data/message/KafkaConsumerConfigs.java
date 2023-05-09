@@ -1,6 +1,6 @@
-package com.store.car.message;
+package com.analytics.data.message;
 
-import com.store.car.dto.CarPostDTO;
+import com.analytics.data.dto.CarPostDTO;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.common.serialization.StringDeserializer;
 import org.springframework.beans.factory.annotation.Value;
@@ -15,7 +15,6 @@ import org.springframework.kafka.support.serializer.JsonDeserializer;
 import java.util.HashMap;
 import java.util.Map;
 
-// classe de configuração
 @EnableKafka
 @Configuration
 public class KafkaConsumerConfigs {
@@ -28,12 +27,12 @@ public class KafkaConsumerConfigs {
     @Bean
     public ConsumerFactory<String, CarPostDTO> consumerFactory() {
 
+        JsonDeserializer<CarPostDTO> deserializer = new JsonDeserializer<>(CarPostDTO.class);
+
         Map<String, Object> props = new HashMap<>();
 
-        // configurações
-
         props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapServers);
-        props.put(ConsumerConfig.GROUP_ID_CONFIG, "store-posts-group"); // indicar que vai consumir informações de um grupo especifico no tópico kafka
+        props.put(ConsumerConfig.GROUP_ID_CONFIG, "analytics-posts-group"); // consumo de informações do mesmo tópico do microservice car. Porem em grupos de consumidores diferentes.
         props.put(JsonDeserializer.TRUSTED_PACKAGES,"*"); // indica que confia-se nas informações que chegarão do kafka
         props.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class); // desserialização da key para string
         props.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, JsonDeserializer.class); // desserialização do corpo da msg para json
