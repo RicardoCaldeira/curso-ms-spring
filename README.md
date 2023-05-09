@@ -1,6 +1,6 @@
 # curso-ms-spring
-Repositório para desenvolvimento do projeto do curso Java com Spring Boot, Kafka e Microserviços - Udemy. 
-O projetos disponibiliza serviços backend para venda de carros, onde estarão disponíveis nos bancos de dados as informações dos proprietários, dos posts de vendas e estatísticas sobre as marcas e modelos dos carros postados.
+Repositório para desenvolvimento do projeto do curso [Java com Spring Boot, Kafka e Microserviços - Udemy](https://www.udemy.com/course/java-spring-boot-kafka-microservicos/). <br>
+O projeto disponibiliza serviços backend para venda de carros, onde estarão disponíveis nos bancos de dados as informações dos proprietários, dos posts de vendas e estatísticas sobre as marcas e modelos dos carros postados.
 
 A relação comunicação entre os serviços criados é ilustrada pela imagem abaixo, onde teremos 3 microserviços:<br>
 - Uma Main RestAPI, que receberá requisições REST e enviará mensagens ao cluster kafka.<br>
