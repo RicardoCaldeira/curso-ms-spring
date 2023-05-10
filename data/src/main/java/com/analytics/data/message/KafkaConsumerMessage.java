@@ -30,3 +30,18 @@ public class KafkaConsumerMessage {
     }
 
 }
+
+/*
+A classe KafkaConsumerMessage utiliza as configurações da classe KafkaConsumerConfigs indiretamente através do método kafkaListenerContainerFactory().
+No método kafkaListenerContainerFactory(), um objeto ConcurrentKafkaListenerContainerFactory é criado e configurado para consumir mensagens do Kafka.
+Essa fábrica de contêineres Kafka é responsável por criar os contêineres de ouvintes que irão consumir as mensagens.
+
+A configuração da fábrica de contêineres é feita chamando o método setConsumerFactory() e passando o resultado do método
+consumerFactory() da classe KafkaConsumerConfigs. O método consumerFactory() retorna a fábrica de consumidores Kafka
+configurada com as propriedades definidas na classe KafkaConsumerConfigs.
+
+Dessa forma, as configurações definidas na classe KafkaConsumerConfigs, como servidores de inicialização,
+deserializadores, etc., são utilizadas indiretamente pela classe KafkaConsumerMessage ao criar a fábrica de contêineres
+Kafka no método kafkaListenerContainerFactory(). Essa fábrica será responsável por criar os contêineres de ouvintes que
+irão consumir as mensagens do Kafka com as configurações especificadas.
+*/
